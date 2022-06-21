@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=12345
+    command: mongod --port 27018
+    networks:
+      - app-tier
+    ports:
+      - "27018:27018"
+
+  social-network:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo
+    networks:
+      - app-tier
+    ports:
+      - "80:80"
+
+networks:
+  app-tier:
+    driver: bridge

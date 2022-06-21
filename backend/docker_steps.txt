@@ -1,0 +1,24 @@
+Docker Image
+-sudo docker pull mongo
+
+Container
+-docker run -d -p 27017:27017 --name m1 mongo
+
+If docker-compose file was created, run:
+- docker-compose up -d
+
+APP Build the Docker image
+- docker build -t my_fastapi_image:latest .
+
+Start the Docker container:
+- docker run -d --name my_fastapicontainer -p 80:80 my_fastapi_image
+
+If docker-compose file was created, run:
+- docker-compose up -d
+- docker-compose up --build -d
+
+https://github.com/markqiu/fastapi-mongodb-realworld-example-app/blob/master/app/db/mongodb_utils.py
+
+
+REACTJS
+https://www.w3schools.com/REACT/react_usecontext.asp
